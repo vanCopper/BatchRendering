@@ -85,6 +85,8 @@ static void SetUniformMat4(uint32_t shader, const char* name, const glm::mat4& m
 
 void SandboxLayer::OnUpdate(Timestep ts)
 {
+	m_FPS = (uint32_t)1000.0/ts.GetMilliseconds();
+	//LOG_TRACE("FPS: {0}", ts.GetMilliseconds());
 	m_CameraController.OnUpdate(ts);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(m_Shader->GetRendererID());
@@ -127,5 +129,6 @@ void SandboxLayer::OnImGuiRender()
     //ImGui::DragFloat2("Quad Position", glm::value_ptr(m_QuadPosition), 0.1f);
     ImGui::Text("Quads: %d", Renderer::GetStats().QuadCount);
     ImGui::Text("Draws: %d", Renderer::GetStats().DrawCount);
+	ImGui::Text("FPS: %d", m_FPS);
     ImGui::End();
 }

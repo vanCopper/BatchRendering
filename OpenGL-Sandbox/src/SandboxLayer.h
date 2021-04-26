@@ -22,4 +22,5 @@ private:
 	GLuint m_GlTex;
 	GLCore::Utils::OrthographicCameraController m_CameraController;
 	const glm::vec2& m_QuadPosition = { 1.0f, 1.0f };
+	uint32_t m_FPS = 0;
 };
